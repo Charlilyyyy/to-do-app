@@ -6,9 +6,8 @@
     <div class="row">
         <div class="col-3"></div>
         <div class="col-6">
-            <form role="form" method="post" action="/store_user_todo">
-                @csrf
-                <input type="text" name="current_user_id" value="{{$current_user->id}}"/>   
+            
+                 
             <h1 class="text-primary text-center mt-3">{{$current_user->name}} To Do List</h1>
             <div class="card">
                 <div class="card-body">
@@ -16,10 +15,14 @@
                     <table class="table">
                         <tbody>
                             @foreach ($current_user->toDos as $todo)
+                            <form role="form" method="post" action="{{URL('/delete_user_todo/'.$todo->id.'/delete')}}"  >
+                                @csrf
+                                @method('DELETE')
                             <tr>
                                     <td>{{$todo->todos}}</td>
-                                    <td><button class="btn btn-danger">Delete</button></td>
+                                    <td><button type="submit" class="btn btn-danger">Delete</button></td>
                             </tr>
+                            </form>
                             @endforeach
                         </tbody>
                     </table>
@@ -29,15 +32,17 @@
                 </div>
             </div>
             <div class="mx-5 mt-2">
-                
+                <form role="form" method="post" action="/store_user_todo">
+                    @csrf
+                    <input type="hidden" name="current_user_id" value="{{$current_user->id}}"/>  
                     <label><h5>Activity Name</h5></label>
                     <input type="text" name="activity" size="60"/>
                     <button type="submit" class="btn btn-success">Add</button>
-                    
+                </form>
                 
             </div>
         </div>
-        </form>
+        
         <div class="col-3"></div>
     </div>
 </section>

@@ -36,4 +36,10 @@ class HomeController extends Controller
         $store_new_todo->save();
         return redirect()->back();
     }
+
+    public function delete_user_todo($id){
+        $todo_delete = Todo::find($id);
+        $todo_delete->delete();
+        return redirect()->back();
+    }
 }
