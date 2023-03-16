@@ -15,6 +15,7 @@
                             <input size="50" type="text" name="name" placeholder="Please fill in your name"/>
                         </div>
                         <div class="text-center mt-4">
+                            <a class="btn btn-danger" href="/">Cancel</a>
                             <button class="btn btn-success" type="submit">Add</button>
                         </div>
                     </div>

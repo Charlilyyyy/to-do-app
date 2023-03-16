@@ -24,7 +24,7 @@
                             @foreach ($users as $user)
                             <tr>
                                     <td class="mx-5 px-5">{{$user->name}}</td>
-                                    <td class="ps-5 ms-5"><button class="btn btn-primary">View My List</button></td>
+                                    <td class="ps-5 ms-5"><a href="{{URL('/user/'.$user->id.'/details/')}}" class="btn btn-primary">View My List</a></td>
                             </tr>
                             @endforeach
                         </tbody>

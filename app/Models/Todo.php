@@ -5,15 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class User extends Model
+class Todo extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'name',
+        'todos',
     ];
-
-    public function toDos(){
-        return $this->hasMany(Todo::class);
-    }
 }

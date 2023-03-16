@@ -22,4 +22,9 @@ class HomeController extends Controller
         $store_new_user->save();
         return redirect('/')->with('msg', 'User added');
     }
+
+    public function user_details($id){
+        $current_user = User::find($id)->load('toDos');
+        return view('user_details',compact('current_user'));
+    }
 }
