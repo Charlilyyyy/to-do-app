@@ -1,7 +1,8 @@
 @include ('layouts.bootstrap')
 
 <section>
-{{-- {{$current_user}} --}}
+{{-- {{$current_user}}
+{{$all_todo}} --}}
 <a class="btn btn-secondary" href="/">Back to home</a>
     <div class="row">
         <div class="col-3"></div>
@@ -11,10 +12,10 @@
             <h1 class="text-primary text-center mt-3">{{$current_user->name}} To Do List</h1>
             <div class="card">
                 <div class="card-body">
-                    @if(count($current_user->toDos) > 0)
+                    @if(count($all_todo) > 0)
                     <table class="table">
                         <tbody>
-                            @foreach ($current_user->toDos as $todo)
+                            @foreach ($all_todo as $todo)
                             <form role="form" method="post" action="{{URL('/delete_user_todo/'.$todo->id.'/delete')}}"  >
                                 @csrf
                                 @method('DELETE')

@@ -5,11 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Todo;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
     public function index(){
-        $users = User::all();
+        $users = User::all()->sortBy('created_at');
         return view('home',compact('users'));
     }
 
@@ -25,8 +26,14 @@ class HomeController extends Controller
     }
 
     public function user_details($id){
-        $current_user = User::find($id)->load('toDos');
-        return view('user_details',compact('current_user'));
+        $current_user = User::find($id);
+        $all_todo = DB::table('todos')->where('user_id',$id)->get()->sortByDesc('created_at');
+        return view('user_details',
+            [
+                'current_user'=>$current_user,
+                'all_todo'=>$all_todo
+            ]
+    );
     }
 
     public function store_user_todo(Request $request){
