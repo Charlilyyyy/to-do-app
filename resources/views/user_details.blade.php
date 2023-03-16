@@ -6,6 +6,9 @@
     <div class="row">
         <div class="col-3"></div>
         <div class="col-6">
+            <form role="form" method="post" action="/store_user_todo">
+                @csrf
+                <input type="text" name="current_user_id" value="{{$current_user->id}}"/>   
             <h1 class="text-primary text-center mt-3">{{$current_user->name}} To Do List</h1>
             <div class="card">
                 <div class="card-body">
@@ -25,7 +28,16 @@
                     @endif
                 </div>
             </div>
+            <div class="mx-5 mt-2">
+                
+                    <label><h5>Activity Name</h5></label>
+                    <input type="text" name="activity" size="60"/>
+                    <button type="submit" class="btn btn-success">Add</button>
+                    
+                
+            </div>
         </div>
+        </form>
         <div class="col-3"></div>
     </div>
 </section>
